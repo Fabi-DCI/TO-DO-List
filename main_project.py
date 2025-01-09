@@ -58,15 +58,12 @@ def task_remove():
         return
 
     task_name = input("Enter the name of the task to remove: ")
-    for task in tasks_by_day[day]:
-        if task_name == task["name"]:
-            tasks_by_day[day].remove(task)
-            finished_tasks.append(task_name)
-            print(f"Task '{task_name}' removed and marked as finished!")
-            return
-
-    print("Task not found!")
-
+    if task_name in tasks_by_day[day]:
+        tasks_by_day[day].remove(task_name)
+        finished_tasks.append(task_name)
+        print(f"Task '{task_name}' removed and marked as finished!")
+    else:
+        print("Task not found!")
 
 def view_tasks():
     """
@@ -96,6 +93,7 @@ def view_stats():
     if len(finished_tasks) > 0:
         print("Finished Tasks List:", finished_tasks)
     print("------------------------")
+
 
 while True:
     print("\n--- To-Do List Menu ---")
