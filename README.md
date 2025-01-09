@@ -2,6 +2,11 @@
 
 A simple terminal-based to-do list application for managing tasks.
 
+NOTE: Thats just version 1 there is still some stuff i need to fix/update:
+- you can add multiple tasks with the same name just diff way of spelling.
+- there is no deadlines yet
+- ...
+
 ## Features
 - **Add Tasks**: Add tasks to your to-do list.
 - **Remove Tasks**: Remove tasks and mark them as finished.
