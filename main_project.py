@@ -1,38 +1,87 @@
 # My first version of my To-Do-List
 # Author: Fabian-DCI
-# Description: A simple terminal-based to-do list application to manage tasks.
+# Description: A simple terminal-based to-do list application to manage tasks with deadlines.
 
-# lists for tasks
-Lst = ["Gym"]
+from datetime import datetime, timedelta
+
+tasks_by_day = {
+    "Monday": [],
+    "Tuesday": [],
+    "Wednesday": [],
+    "Thursday": [],
+    "Friday": [],
+    "Saturday": [],
+    "Sunday": []
+}
+
 finished_tasks = []
 
 def task_add():
     """
     Adds a new task to the list.
-    If the task already exists, it notifies the user.
+    If the task already exists for the same day, it notifies the user.
     """
-    Taskadd = input("Enter your task to add to the list: ").strip()
-    if Taskadd in Lst:
-        print("Task already exists!")
-    else:
-        Lst.append(Taskadd)
-        print(f"Task '{Taskadd}' added!")
-    
-    print("Current Tasks:", Lst)
+    day = input("Enter the day for the task (e.g., Monday): ").capitalize()
+    if day not in tasks_by_day:
+        print("Invalid day! Please enter a valid day of the week.")
+        return
+
+    task_name = input("Enter your task: ")
+    for task in tasks_by_day[day]:
+        if task_name == task:
+            print("Task already exists for this day!")
+            return
+
+    tasks_by_day[day].append(task_name)
+    print(f"Task '{task_name}' added to {day}.")
+
+    #has_deadline = input("Does this task have a deadline? (yes/no): ").lower()         # Still figuring out how to write this part of code with deadlines
+    #deadline = None
+
+    #if has_deadline == "yes":
+        #deadline_input = input("Enter the deadline (YYYY-MM-DD HH:MM): "):
+        #if deadline_input:
+            #deadline = datetime.strptime(deadline_input, "%Y-%m-%d %H:%M")
+            #if deadline < datetime.now():
+                #print("Deadline must be in the future!")
+               # return
+
 
 def task_remove():
     """
     Removes a task from the list and marks it as finished.
     If the task is not found, it notifies the user.
     """
-    Taskdel = input("Enter your task to remove from the list: ").strip()
-    if Taskdel in Lst:
-        Lst.remove(Taskdel)
-        finished_tasks.append(Taskdel)
-        print(f"Task '{Taskdel}' removed and marked as finished!")
-    else:
-        print("Task not found!")
-    print("Current Tasks: ", Lst)
+    day = input("Enter the day of the task to remove (e.g., Monday): ").capitalize()
+    if day not in tasks_by_day:
+        print("Invalid day! Please enter a valid day of the week.")
+        return
+
+    task_name = input("Enter the name of the task to remove: ")
+    for task in tasks_by_day[day]:
+        if task_name == task["name"]:
+            tasks_by_day[day].remove(task)
+            finished_tasks.append(task_name)
+            print(f"Task '{task_name}' removed and marked as finished!")
+            return
+
+    print("Task not found!")
+
+
+def view_tasks():
+    """
+    Displays all tasks organized by day.
+    """
+    print("\n--- All Tasks ---")
+    for day, tasks in tasks_by_day.items():
+        print(f"\n{day}:")
+        if not tasks:
+            print("  No tasks.")
+        else:
+            for task in tasks:
+                print(f"  - {task}")
+    print("-------------------")
+
 
 def view_stats():
     """
@@ -40,8 +89,9 @@ def view_stats():
     - Shows the count of open tasks.
     - Shows the count and list of finished tasks.
     """
+    open_tasks_count = sum(len(tasks) for tasks in tasks_by_day.values())
     print("\n--- Task Statistics ---")
-    print(f"Open Tasks: {len(Lst)}")
+    print(f"Open Tasks: {open_tasks_count}")
     print(f"Finished Tasks: {len(finished_tasks)}")
     if len(finished_tasks) > 0:
         print("Finished Tasks List:", finished_tasks)
@@ -61,7 +111,7 @@ while True:
     elif choice == "2":
         task_remove()
     elif choice == "3":
-        print("Your Tasks:", Lst)
+        view_tasks()
     elif choice == "4":
         view_stats()
     elif choice == "5":
