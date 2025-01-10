@@ -1,8 +1,8 @@
 # My first version of my To-Do-List
 # Author: Fabian-DCI
-# Description: A simple terminal-based to-do list application to manage tasks with deadlines.
+# Description: A simple terminal-based to-do list application to manage tasks.
 
-from datetime import datetime, timedelta
+#from datetime import datetime, timedelta
 
 tasks_by_day = {
     "Monday": [],
@@ -82,7 +82,7 @@ def view_tasks():
 
 def view_stats():
     """
-    Displays statistics about open and finished tasks.
+    Displays stats about open and finished tasks.
     - Shows the count of open tasks.
     - Shows the count and list of finished tasks.
     """
