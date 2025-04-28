@@ -2,7 +2,6 @@
 # Author: Fabian-DCI
 # Description: A simple terminal-based to-do list application to manage tasks.
 
-#from datetime import datetime, timedelta
 
 tasks_by_day = {
     "Monday": [],
@@ -34,17 +33,6 @@ def task_add():
 
     tasks_by_day[day].append(task_name)
     print(f"Task '{task_name}' added to {day}.")
-
-    #has_deadline = input("Does this task have a deadline? (yes/no): ").lower()         # Still figuring out how to write this part of code with deadlines
-    #deadline = None
-
-    #if has_deadline == "yes":
-        #deadline_input = input("Enter the deadline (YYYY-MM-DD HH:MM): "):
-        #if deadline_input:
-            #deadline = datetime.strptime(deadline_input, "%Y-%m-%d %H:%M")
-            #if deadline < datetime.now():
-                #print("Deadline must be in the future!")
-               # return
 
 
 def task_remove():
