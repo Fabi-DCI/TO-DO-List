@@ -1,80 +1,92 @@
-# My First To-Do List Application  
-### By: Fabian-DCI  
+My First To-Do List Application
 
----
+Author: Fabian-DCI
+Description
 
-## Introduction  
-- **Project Name**: To-Do List  
-- **Description**:  
-  Terminal-based application to manage daily tasks, organized by day of the week.  
+This is a simple terminal-based To-Do List application built as my first-ever project using Python. The application allows users to manage their tasks for each day of the week, providing functionalities to add, remove, and view tasks. Users can also see task statistics, including the number of tasks completed and still open.
+Features
 
----
+    Add Task: Add a task to a specific day of the week.
 
-## Features
-1. **Task Management**:  
-   - Add tasks to specific weekdays.  
-   - Prevent duplicate entries for the same day.  
-   - Remove tasks and mark them as completed.  
+    Remove Task: Remove a task from a day and mark it as finished.
 
-2. **Task Display**:  
-   - View tasks neatly organized by weekday.  
-   - Simple format for quick reference.  
+    View Tasks: View all tasks organized by day of the week.
 
-3. **Task Statistics**:  
-   - Count the number of open tasks.  
-   - Track completed tasks in a separate list.  
+    View Stats: See the number of open and finished tasks.
 
----
+    Task Duplication Check: Prevent adding duplicate tasks for the same day.
 
-## How It Works  
-### Main Menu  
-- Interactive menu with the following options:  
-  1. Add a Task  
-  2. Remove a Task  
-  3. View All Tasks  
-  4. View Task Statistics  
-  5. Exit   
+How to Run
+Prerequisites
 
----
+    Python 3.x: Ensure that Python is installed on your machine.
 
-## Code Overview  
-### Core Data Structures  
-- **`tasks_by_day`**:  
-  - A dictionary mapping weekdays to their respective task lists.  
+Installation Steps
 
-- **`finished_tasks`**:  
-  - A list to store completed tasks for easy tracking.  
+    Clone the Repository:
 
-### Key Functions  
-1. **`task_add()`**  
-   - Adds a task to a specified day.  
-   - Prevents duplicates within the same day.  
+git clone git@github.com:Fabi-DCI/TO-DO-List.git
 
-2. **`task_remove()`**  
-   - Removes a task from the list.  
-   - Marks the task as completed by moving it to `finished_tasks`.  
+Navigate to the project directory:
 
-3. **`view_tasks()`**  
-   - Displays tasks grouped by day.  
+cd TO-DO-List
 
-4. **`view_stats()`**  
-   - Summarizes open and completed tasks with counts.  
+Run the script:
 
-### Menu Control  
-- The application operates within a `while` loop, continuously displaying the menu until the user chooses to exit.  
+    python todo_list.py
 
----
+Usage
 
-## Planned Enhancements  
-1. **Deadlines**:  
-   - Add optional deadlines for tasks using Python's `datetime` module.  
-   - Implement alerts for overdue tasks.  
+Once the application is running, you will be presented with a menu of options:
 
-2. **Task Prioritization**:  
-   - Allow users to assign priority levels (e.g., High, Medium, Low).  
+    Add Task: Add a new task to the specified day.
 
-3. **Graphical Interface**:  
-   - Replace the terminal interface with a GUI for a more user-friendly experience.  
+    Remove Task: Remove a task and mark it as finished.
 
-4. **Recurring Tasks**:  
-   - Add functionality to schedule recurring tasks automatically.  
+    View Tasks: View all tasks for the week.
+
+    View Stats: View the total number of open tasks and completed tasks.
+
+    Exit: Exit the application.
+
+Example Interaction:
+
+--- To-Do List Menu ---
+1. Add Task
+2. Remove Task
+3. View Tasks
+4. View Stats
+5. Exit
+Choose an option (1-5): 1
+Enter the day for the task (e.g., Monday): Monday
+Enter your task: Go to the gym
+Task 'Go to the gym' added to Monday.
+
+--- To-Do List Menu ---
+1. Add Task
+2. Remove Task
+3. View Tasks
+4. View Stats
+5. Exit
+Choose an option (1-5): 3
+
+--- All Tasks ---
+Monday:
+  - Go to the gym
+-------------------
+
+Code Structure
+
+    tasks_by_day: A dictionary that stores tasks categorized by days of the week.
+
+    finished_tasks: A list that keeps track of tasks that have been removed and marked as finished.
+
+    task_add(): Adds a new task to the list for the specified day.
+
+    task_remove(): Removes a task and marks it as finished.
+
+    view_tasks(): Displays all tasks organized by day of the week.
+
+    view_stats(): Displays statistics about open and finished tasks.
+
+This was my first Python project! If you'd like to improve the project, feel free.
